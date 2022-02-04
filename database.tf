@@ -13,5 +13,5 @@ module "mds-instance" {
   existing_mds_instance_id  = var.existing_mds_instance_ocid
   deploy_ha = var.deploy_mds_ha
   mysql_shape = var.mysql_shape
-  defined_tags = var.defined_tags
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }

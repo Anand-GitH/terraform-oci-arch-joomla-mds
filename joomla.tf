@@ -23,5 +23,5 @@ module "joomla" {
   dedicated             = var.dedicated
   flex_shape_ocpus      = var.node_flex_shape_ocpus
   flex_shape_memory     = var.node_flex_shape_memory
-  defined_tags          = var.defined_tags
+  defined_tags          = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
