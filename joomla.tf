@@ -23,4 +23,5 @@ module "joomla" {
   dedicated             = var.dedicated
   flex_shape_ocpus      = var.node_flex_shape_ocpus
   flex_shape_memory     = var.node_flex_shape_memory
+  defined_tags          = var.defined_tags
 }

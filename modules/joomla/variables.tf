@@ -124,3 +124,8 @@ locals {
 locals {
   is_flexible_node_shape = contains(local.compute_flexible_shapes, var.shape)
 }
+
+variable "defined_tags" {
+  description = "Defined tags for WordPress host."
+  default     = ""
+}

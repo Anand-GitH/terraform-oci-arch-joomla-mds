@@ -5,9 +5,9 @@ resource "oci_core_virtual_network" "mysqlvcn" {
   cidr_block = var.vcn_cidr
   compartment_id = var.compartment_ocid
   display_name = var.vcn
-  dns_label = "mysqlvcn"
-
+  dns_label = "joomlavcn"
   count = var.existing_vcn_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 
@@ -15,8 +15,8 @@ resource "oci_core_internet_gateway" "internet_gateway" {
   compartment_id = var.compartment_ocid
   display_name = "internet_gateway"
   vcn_id = local.vcn_id
-
   count = var.existing_internet_gateway_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 
@@ -24,8 +24,8 @@ resource "oci_core_nat_gateway" "nat_gateway" {
   compartment_id = var.compartment_ocid
   vcn_id = local.vcn_id
   display_name   = "nat_gateway"
-
   count = var.existing_nat_gateway_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 
@@ -37,8 +37,8 @@ resource "oci_core_route_table" "public_route_table" {
     destination = "0.0.0.0/0"
     network_entity_id = local.internet_gateway_id
   }
-
   count = var.existing_public_route_table_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 
@@ -50,8 +50,8 @@ resource "oci_core_route_table" "private_route_table" {
     destination       = "0.0.0.0/0"
     network_entity_id = local.nat_gatway_id
   }
-
   count = var.existing_private_route_table_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 resource "oci_core_security_list" "public_security_list" {
@@ -70,8 +70,8 @@ resource "oci_core_security_list" "public_security_list" {
     protocol = "6"
     source   = "0.0.0.0/0"
   }
-
   count = var.existing_public_security_list_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 resource "oci_core_security_list" "public_security_list_http" {
@@ -98,8 +98,8 @@ resource "oci_core_security_list" "public_security_list_http" {
     protocol = "6"
     source   = "0.0.0.0/0"
   }
-
   count = var.existing_public_security_list_http_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 resource "oci_core_security_list" "private_security_list" {
@@ -139,8 +139,8 @@ resource "oci_core_security_list" "private_security_list" {
     protocol = "6"
     source   = var.vcn_cidr
   }
-
   count = var.existing_private_security_list_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 resource "oci_core_subnet" "public" {
@@ -151,9 +151,9 @@ resource "oci_core_subnet" "public" {
   route_table_id = local.public_route_table_id
   security_list_ids = [local.public_security_list_id, local.public_security_list_http_id]
   #dhcp_options_id = var.use_existing_vcn_ocid ? var.existing_vcn_ocid.default_dhcp_options_id : oci_core_virtual_network.mysqlvcn[0].default_dhcp_options_id
-  dns_label = "mysqlpub"
-
+  dns_label = "joomlapub"
   count = var.existing_public_subnet_ocid == "" ? 1 : 0
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 resource "oci_core_subnet" "private" {
@@ -165,10 +165,9 @@ resource "oci_core_subnet" "private" {
   security_list_ids          = [local.private_security_list_id]
   #dhcp_options_id = var.use_existing_vcn_ocid ? var.existing_vcn_ocid.default_dhcp_options_id : oci_core_virtual_network.mysqlvcn[0].default_dhcp_options_id
   prohibit_public_ip_on_vnic = "true"
-  dns_label                  = "mysqlpriv"
-
+  dns_label                  = "joomlapriv"
   count = var.existing_private_subnet_ocid == "" ? 1 : 0
-
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 

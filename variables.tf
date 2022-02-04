@@ -81,7 +81,7 @@ variable "existing_mds_instance_ocid" {
 
 variable "vcn" {
   description = "VCN Name"
-  default     = "mysql_vcn"
+  default     = "joomla_mds_vcn"
 }
 
 variable "vcn_cidr" {
@@ -105,8 +105,8 @@ variable "node_image_id" {
 }
 
 variable "node_shape" {
-  description = "Instance shape to use for master instance. "
- default     = "VM.Standard.E2.1"
+description = "Instance shape to use for master instance. "
+ default     = "VM.Standard.E4.Flex"
 }
 
 variable "node_flex_shape_ocpus" {

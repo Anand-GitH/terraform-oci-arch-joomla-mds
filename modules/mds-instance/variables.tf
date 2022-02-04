@@ -51,3 +51,8 @@ variable "deploy_ha" {
   description = "Use HA for MDS"
   default = false
 }
+
+variable "defined_tags" {
+  description = "Defined tags for WordPress host."
+  default     = ""
+}

@@ -52,7 +52,8 @@ resource "oci_core_instance" "Joomla" {
   shape               = var.shape
   availability_domain = var.use_AD == false ? var.availability_domains[0] : var.availability_domains[count.index%length(var.availability_domains)]
   fault_domain        = var.use_AD == true ? "FAULT-DOMAIN-1" : "FAULT-DOMAIN-${(count.index  % local.fault_domains_per_ad) +1}"
-
+  defined_tags            = var.defined_tags
+  
   dynamic "shape_config" {
     for_each = local.is_flexible_node_shape ? [1] : []
     content {

@@ -15,9 +15,8 @@ resource "oci_mysql_mysql_db_system" "MDSinstance" {
     subnet_id = var.subnet_id
     data_storage_size_in_gb = var.mysql_data_storage_in_gb
     display_name = var.display_name
-
     count = var.existing_mds_instance_id == "" ? 1 : 0
-
+    defined_tags = var.defined_tags
     is_highly_available = var.deploy_ha
 }
 
