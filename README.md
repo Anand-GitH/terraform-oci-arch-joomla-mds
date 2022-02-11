@@ -1,6 +1,6 @@
 # terraform-oci-arch-joomla-mds
 
-Deploy Joomla! on Oracle Cloud Intrastructure (OCI) and MySQL Database Service (MDS) using these Terraform modules.
+Deploy Joomla on Oracle Cloud Intrastructure (OCI) and MySQL Database Service (MDS) using these Terraform modules.
 
 ## Prerequisites
 
@@ -97,12 +97,38 @@ module "oci-arch-joomla-mds" {
 ```
 
 ### Testing your Deployment
-After the deployment is finished, you can access Joomla installer by picking wordpress_wp-admin_url output and pasting into web browser window:
+
+1. After the deployment is finished, you can access Joomla installer by picking joomla_public_ip output and pasting into web browser window. In the installation wizard please continue to fill in the form:
 
 ````
-joomla_public_ip = 193.122.198.19
+joomla_public_ip = 129.158.62.151
 `````
 
+![](./images/joomla_setup_01.png)
+
+2. In a Database tab of the installer please fill in the form's fields as follows (for the Host Name provide MDS private ip from output - mds_instance_ip). Then click Next button: 
+
+````
+mds_instance_ip = 10.0.1.64
+`````
+
+![](./images/joomla_setup_02.png)
+
+3. You need to access Joomla Webserver with SSH protocol and remove installation files (then click Next button):
+
+![](./images/joomla_setup_03.png)
+
+4. In a Overview tab just click Install button:
+
+![](./images/joomla_setup_04.png)
+
+5. When installation is done you need to remove installation from the server (continue to do it with your SSH session):
+
+![](./images/joomla_setup_05.png)
+
+6. Now you can access the initial Joomla home page:
+
+![](./images/joomla_setup_06.png)
 
 ## Contributing
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
