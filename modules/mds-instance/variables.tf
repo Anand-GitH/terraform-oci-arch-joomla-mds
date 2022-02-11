@@ -22,7 +22,7 @@ variable "subnet_id" {
 
 variable "mysql_shape" {
   description = "Instance shape to use."
-  default     = "VM.Standard.E2.1"
+  default     = "MySQL.VM.Standard.E3.1.8GB"
 }
 
 variable "admin_username" {
