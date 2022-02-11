@@ -114,7 +114,7 @@ That being the case, we would sincerely like to thank:
 - Frédéric Descamps (https://github.com/lefred)
 
 ## License
-Copyright (c) 2021 Oracle and/or its affiliates.
+Copyright (c) 2022 Oracle and/or its affiliates.
 
 Licensed under the Universal Permissive License (UPL), Version 1.0.
 
