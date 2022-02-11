@@ -130,6 +130,12 @@ mds_instance_ip = 10.0.1.64
 
 ![](./images/joomla_setup_06.png)
 
+7. To access Joomla admin page you need to login:
+
+![](./images/joomla_setup_07.png)
+
+![](./images/joomla_setup_08.png)
+
 ## Contributing
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
 
