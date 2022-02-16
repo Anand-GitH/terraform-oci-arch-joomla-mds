@@ -47,8 +47,7 @@ variable "existing_mds_instance_id" {
   default     = ""
 }
 
-variable "deploy_ha" {
-  description = "Use HA for MDS"
+variable "mysql_is_highly_available" {
   default = false
 }
 
