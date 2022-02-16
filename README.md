@@ -101,7 +101,7 @@ module "oci-arch-joomla-mds" {
 1. After the deployment is finished, you can access Joomla Home Page by picking joomla_home_URL output and pasting it into the web browser window:
 
 ````
-joomla_home_URL = http://130.162.39.95/
+joomla_home_URL = http://141.144.245.15/
 `````
 
 ![](./images/joomla_home.png)
@@ -110,10 +110,12 @@ joomla_home_URL = http://130.162.39.95/
 2. To access the Joomla Console page you need to log in after picking up Joomla console URL output:
 
 ````
-joomla_console_URL = http://130.162.39.95/administrator/
+joomla_console_URL = http://141.144.245.15/administrator/
 `````
 
-![](./images/joomla_console.png)
+![](./images/joomla_console_login.png)
+
+![](./images/joomla_console_page.png)
 
 ## Contributing
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
