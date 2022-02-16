@@ -6,13 +6,41 @@ variable "mysql_version" {
   default     = "8.0.26"
 }
 
+variable "tenancy_ocid" {
+}
+
+variable "vcn_id" {
+  description = "The OCID of the VCN"
+  default     = ""
+}
+
+variable "joomla_subnet_id" {
+  description = "The OCID of the Joomla subnet to create the VNIC for public/private access. "
+  default     = ""
+}
+
+variable "lb_subnet_id" {
+  description = "The OCID of the Load Balancer subnet to create the VNIC for public access. "
+  default     = ""
+}
+
+variable "bastion_subnet_id" {
+  description = "The OCID of the Bastion subnet to create the VNIC for public access. "
+  default     = ""
+}
+
+variable "fss_subnet_id" {
+  description = "The OCID of the File Storage Service subnet to create the VNIC for private access. "
+  default     = ""
+}
+
 variable "compartment_ocid" {
   description = "Compartment's OCID where VCN will be created. "
 }
 
-variable "availability_domains" {
-  description = "The Availability Domain of the instance. "
-  default     = []
+variable "availability_domain_name" {
+  description = "The Availability Domain of the instance."
+  default     = ""
 }
 
 variable "display_name" {
@@ -28,6 +56,54 @@ variable "subnet_id" {
 variable "shape" {
   description = "Instance shape to use for master instance. "
   default     = "VM.Standard2.1"
+}
+
+variable "lb_shape" {
+  default = "flexible"
+}
+
+variable "flex_lb_min_shape" {
+  default = "10"
+}
+
+variable "flex_lb_max_shape" {
+  default = "100"
+}
+
+
+variable "use_bastion_service" {
+  default = false
+}
+
+variable "bastion_service_region" {
+  description = "Bastion Service Region"
+  default     = ""
+}
+
+variable "bastion_image_id" {
+  default = ""
+}
+
+variable "bastion_shape" {
+  default = "VM.Standard.E3.Flex"
+}
+
+variable "bastion_flex_shape_ocpus" {
+  default = 1
+}
+
+variable "bastion_flex_shape_memory" {
+  default = 1
+}
+
+variable "use_shared_storage" {
+  description = "Decide if you want to use shared NFS on OCI FSS"
+  default     = true
+}
+
+variable "joomla_shared_working_dir" {
+  description = "Decide where to store Joomla data"
+  default     = "/sharedjoomla"
 }
 
 variable "flex_shape_ocpus" {
@@ -55,11 +131,6 @@ variable "ssh_authorized_keys" {
   default     = ""
 }
 
-variable "ssh_private_key" {
-  description = "The private key path to access instance. "
-  default     = ""
-}
-
 variable "image_id" {
   description = "The OCID of an image for an instance to use. "
   default     = ""
@@ -82,10 +153,27 @@ variable "joomla_schema" {
   description = "Joomla MySQL Schema"
 }
 
+variable "joomla_prefix" {
+  description = "Joomla MySQL Prefix"
+  default = "joomla_"
+}
+
+variable "joomla_console_user" {
+  description = "Joomla Console User"
+  default = "admin"
+}   
+
+variable "joomla_console_password" {
+  description = "Joomla Console User Password"
+}
+
+variable "joomla_console_email" {
+  description = "Joomla Console User Email"
+} 
+
 variable "admin_username" {
     description = "Username od the MDS admin account"
 }
-
 
 variable "admin_password" {
     description = "Password for the admin user for MDS"
@@ -95,7 +183,7 @@ variable "mds_ip" {
     description = "Private IP of the MDS Instance"
 }
 
-variable "nb_of_webserver" {
+variable "numberOfNodes" {
     description = "Amount of Webservers to deploy"
     default = 1
 }
@@ -112,6 +200,7 @@ variable "dedicated" {
   default     = false
 }
 
+# Dictionary Locals
 locals {
   compute_flexible_shapes = [
     "VM.Standard.E3.Flex",
@@ -121,8 +210,10 @@ locals {
   ]
 }
 
+# Checks if is using Flexible Compute Shapes
 locals {
   is_flexible_node_shape = contains(local.compute_flexible_shapes, var.shape)
+  is_flexible_lb_shape   = var.lb_shape == "flexible" ? true : false
 }
 
 variable "defined_tags" {

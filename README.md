@@ -98,43 +98,24 @@ module "oci-arch-joomla-mds" {
 
 ### Testing your Deployment
 
-1. After the deployment is finished, you can access Joomla installer by picking joomla_public_ip output and pasting into web browser window. In the installation wizard please continue to fill in the form:
+1. After the deployment is finished, you can access Joomla Home Page by picking joomla_home_URL output and pasting it into the web browser window:
 
 ````
-joomla_public_ip = 129.158.62.151
+joomla_home_URL = http://141.144.245.15/
 `````
 
-![](./images/joomla_setup_01.png)
+![](./images/joomla_home.png)
 
-2. In a Database tab of the installer please fill in the form's fields as follows (for the Host Name provide MDS private ip from output - mds_instance_ip). Then click Next button: 
+
+2. To access the Joomla Console page you need to log in after picking up Joomla console URL output:
 
 ````
-mds_instance_ip = 10.0.1.64
+joomla_console_URL = http://141.144.245.15/administrator/
 `````
 
-![](./images/joomla_setup_02.png)
+![](./images/joomla_console_login.png)
 
-3. You need to access Joomla Webserver with SSH protocol and remove installation files (then click Next button):
-
-![](./images/joomla_setup_03.png)
-
-4. In a Overview tab just click Install button:
-
-![](./images/joomla_setup_04.png)
-
-5. When installation is done you need to remove installation from the server (continue to do it with your SSH session):
-
-![](./images/joomla_setup_05.png)
-
-6. Now you can access the initial Joomla home page:
-
-![](./images/joomla_setup_06.png)
-
-7. To access Joomla admin page you need to login:
-
-![](./images/joomla_setup_07.png)
-
-![](./images/joomla_setup_08.png)
+![](./images/joomla_console_page.png)
 
 ## Contributing
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
