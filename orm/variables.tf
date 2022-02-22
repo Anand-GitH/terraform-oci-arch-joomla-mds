@@ -131,8 +131,8 @@ variable "mysql_db_system_data_storage_size_in_gb" {
 }
 
 variable "mysql_db_system_description" {
-  description = "MySQL DB System for Drupal-MDS"
-  default = "MySQL DB System for Drupal-MDS"
+  description = "MySQL DB System for Joomla-MDS"
+  default = "MySQL DB System for Joomla-MDS"
 }
 
 variable "mysql_db_system_display_name" {
