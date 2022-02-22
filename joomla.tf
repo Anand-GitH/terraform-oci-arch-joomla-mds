@@ -12,7 +12,7 @@ module "joomla" {
   shape                     = var.node_shape
   label_prefix              = var.label_prefix
   ssh_authorized_keys       = var.ssh_public_key
-  mds_ip                    = module.mds-instance.private_ip
+  mds_ip                    = module.mds-instance.mysql_db_system.ip_address
   joomla_subnet_id          = oci_core_subnet.joomla_subnet.id
   lb_subnet_id              = var.numberOfNodes > 1 ? oci_core_subnet.lb_subnet_public[0].id : ""
   bastion_subnet_id         = (var.numberOfNodes > 1 && var.use_bastion_service == false) ? oci_core_subnet.bastion_subnet_public[0].id : ""

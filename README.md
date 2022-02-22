@@ -65,6 +65,15 @@ admin_password = "<admin_password>"
 
 # joomla_password
 joomla_password = "<joomla_password>"
+
+# numberOfNodes
+numberOfNodes = 1 # value 2+ for multinode scenario will be deployed inluding LB & FSS.
+
+# joomla_console_email
+joomla_console_email = "user.name@example.com"
+
+# joomla_console_password
+joomla_console_password = "<joomla_console_password>"
 ````
 
 ### Create the Resources
@@ -93,6 +102,9 @@ module "oci-arch-joomla-mds" {
   compartment_ocid              = "<compartment_ocid>"
   admin_password                = "<admin_password>" 
   joomla_password               = "<joomla_password>"  
+  numberOfNodes                 = 1 
+  joomla_console_email          = "user.name@example.com"
+  joomla_console_password       = "<joomla_console_password>"
 }
 ```
 

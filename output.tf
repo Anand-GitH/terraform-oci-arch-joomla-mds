@@ -22,7 +22,8 @@ output "joomla_console_email" {
 } 
 
 output "mds_instance_ip" {
-  value = module.mds-instance.private_ip
+  value = module.mds-instance.mysql_db_system.ip_address
+  sensitive = true
 }
 
 output "generated_ssh_private_key" {

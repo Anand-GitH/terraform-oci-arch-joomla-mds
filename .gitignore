@@ -3,6 +3,13 @@
 .AppleDouble
 .LSOverride
 
+# Terraform
+.terraform
+.terraform.lock.hcl
+terraform.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+
 # Icon must end with two \r
 Icon
 
