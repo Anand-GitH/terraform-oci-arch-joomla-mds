@@ -103,7 +103,6 @@ variableGroups:
       - mysql_shape
       - mysql_db_system_display_name
       - mysql_db_system_data_storage_size_in_gb
-      - mysql_is_highly_available
 
 variables:
 
