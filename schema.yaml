@@ -19,6 +19,11 @@ variableGroups:
       - release
       - node_image_id
       - label_prefix
+      - mysql_db_system_display_name
+      - mysql_db_system_description
+      - mysql_db_system_maintenance_window_start_time
+      - mysql_db_system_hostname_label
+      - mysql_db_system_fault_domain
 
   - title: Required Variables
     visible: true
@@ -94,9 +99,10 @@ variableGroups:
           - show_advanced
     variables:
       - admin_username
-      - mds_instance_name
       - mysql_is_highly_available
       - mysql_shape
+      - mysql_db_system_display_name
+      - mysql_db_system_data_storage_size_in_gb
 
 variables:
 
@@ -396,11 +402,6 @@ variables:
     description: MySQL Password for Joomla User
     pattern: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\\\"\\\\|,.<>\\/?]).{8,32}$"
 
-  mds_instance_name:
-    type: string
-    required: true
-    title: MDS Instance's name
-
   joomla_instance_name:
     type: string
     required: true
@@ -474,6 +475,21 @@ variables:
       - "MySQL.VM.Standard.E3.48.768GB"    
       - "MySQL.VM.Standard.E3.64.1024GB"  
       - "MySQL.HeatWave.VM.Standard.E3" 
+
+  mysql_db_system_display_name:
+    type: string
+    required: true
+    title: MySQL Database Service display name
+  
+  mysql_db_system_data_storage_size_in_gb:
+    type: number
+    title: "MySQL Data Storage Size in GB"
+    default: "50"
+
+  mysql_db_system_description:
+    type: string
+    required: true
+    title: MySQL Database Service description 
 
   linux_os_version:
     type: enum

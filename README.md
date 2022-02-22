@@ -65,6 +65,15 @@ admin_password = "<admin_password>"
 
 # joomla_password
 joomla_password = "<joomla_password>"
+
+# numberOfNodes
+numberOfNodes = 1 # value 2+ for multinode scenario will be deployed inluding LB & FSS.
+
+# joomla_console_email
+joomla_console_email = "user.name@example.com"
+
+# joomla_console_password
+joomla_console_password = "<joomla_console_password>"
 ````
 
 ### Create the Resources
@@ -93,6 +102,9 @@ module "oci-arch-joomla-mds" {
   compartment_ocid              = "<compartment_ocid>"
   admin_password                = "<admin_password>" 
   joomla_password               = "<joomla_password>"  
+  numberOfNodes                 = 1 
+  joomla_console_email          = "user.name@example.com"
+  joomla_console_password       = "<joomla_console_password>"
 }
 ```
 
@@ -121,10 +133,10 @@ joomla_console_URL = http://141.144.245.15/administrator/
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
 
 ### Attribution & Credits
-This repository was initially inspired on the materials found in [lefred's blog](https://lefred.be/content/deploying-joomla-on-oci-and-mds/).
-
+This repository was initially inspired on the materials found in [lefred's blog](https://lefred.be/content/deploying-joomla-on-oci-and-mds/). One of the enhancements done to the materials in question was the adoption of the [OCI Cloudbricks MySQL module](https://github.com/oracle-devrel/terraform-oci-cloudbricks-mysql-database).
 That being the case, we would sincerely like to thank:
 - Frédéric Descamps (https://github.com/lefred)
+- Denny Alquinta (https://github.com/dralquinta)
 
 ## License
 Copyright (c) 2022 Oracle and/or its affiliates.

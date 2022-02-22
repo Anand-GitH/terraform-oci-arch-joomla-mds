@@ -21,10 +21,6 @@ output "joomla_host_name" {
   value = concat(oci_core_instance.Joomla.*.display_name, oci_core_instance.Joomla_from_image.*.display_name)
 }
 
-output "wordpress_host_name" {
-  value = oci_core_instance.Joomla.display_name
-}
-
 output "generated_ssh_private_key" {
   value     = tls_private_key.public_private_key_pair.private_key_pem
   sensitive = true
