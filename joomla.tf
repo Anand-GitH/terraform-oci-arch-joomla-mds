@@ -2,7 +2,7 @@
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 module "joomla" {
-  source                    = "github.com/oracle-devrel/terraform-oci-arch-joomla"
+  source                    = "github.com/Anand-GitH/terraform-oci-arch-joomla"
   tenancy_ocid              = var.tenancy_ocid
   vcn_id                    = oci_core_virtual_network.joomla_mds_vcn.id
   numberOfNodes             = var.numberOfNodes
